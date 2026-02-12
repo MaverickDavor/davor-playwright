@@ -4,32 +4,37 @@ test("has cart", async ({ page }) => {
   await page.goto("https://www.demoblaze.com/index.html");
   await page.getByRole("link", { name: "Cart" }).click();
   // Expect a cart to have columns.
-  page.getByRole("columnheader", { name: "Pic" });
-  page.getByRole("columnheader", { name: "Title" });
-  page.getByRole("columnheader", { name: "Price" });
-  page.getByRole("columnheader", { name: "x" });
+  await expect(page.getByRole("columnheader", { name: "Pic" })).toBeVisible();
+  await expect(page.getByRole("columnheader", { name: "Title" })).toBeVisible();
+  await expect(page.getByRole("columnheader", { name: "Price" })).toBeVisible();
+  await expect(page.getByRole("columnheader", { name: "x" })).toBeVisible();
   // Expect a page to have button.
-  page.getByRole("button", { name: "Place Order" });
+  await expect(page.getByRole("button", { name: "Place Order" })).toBeVisible();
 });
 
 test("has checkout data", async ({ page }) => {
   await page.goto("https://www.demoblaze.com/index.html");
   await page.getByRole("link", { name: "Cart" }).click();
+  await page.getByRole("button", { name: "Place Order" }).click();
+  //await page.pause();
   // Expect a cart to have columns.
-  page.getByText("Total:");
-  page.getByText("Name:", { exact: true });
-  page.getByRole("textbox", { name: "Total: Name:" });
-  page.getByText("Country:");
-  page.getByRole("textbox", { name: "Country:" });
-  page.getByText("City:");
-  page.getByRole("textbox", { name: "City:" });
-  page.getByText("Credit card:");
-  page.getByRole("textbox", { name: "Credit card:" });
-  page.getByText("Month:");
-  page.getByRole("textbox", { name: "Month:" });
-  page.getByText("Year:");
-  page.getByRole("textbox", { name: "Year:" });
+  await expect(page.getByText("Name:", { exact: true })).toBeVisible();
+  await expect(
+    page.getByRole("textbox", { name: "Total: Name:" }),
+  ).toBeVisible();
+  await expect(page.getByText("Country:")).toBeVisible();
+  await expect(page.getByRole("textbox", { name: "Country:" })).toBeVisible();
+  await expect(page.getByText("City:")).toBeVisible();
+  await expect(page.getByRole("textbox", { name: "City:" })).toBeVisible();
+  await expect(page.getByText("Credit card:")).toBeVisible();
+  await expect(
+    page.getByRole("textbox", { name: "Credit card:" }),
+  ).toBeVisible();
+  await expect(page.getByText("Month:")).toBeVisible();
+  await expect(page.getByRole("textbox", { name: "Month:" })).toBeVisible();
+  await expect(page.getByText("Year:")).toBeVisible();
+  await expect(page.getByRole("textbox", { name: "Year:" })).toBeVisible();
   //Expect to have close and purchase buttons
-  page.getByLabel("Place order").getByText("Close");
-  page.getByRole("button", { name: "Purchase" });
+  await expect(page.getByLabel("Place order").getByText("Close")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Purchase" })).toBeVisible();
 });

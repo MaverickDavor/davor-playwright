@@ -4,14 +4,14 @@ test("has login", async ({ page }) => {
   await page.goto("https://www.demoblaze.com/index.html");
   await page.getByRole("link", { name: "Log in" }).click();
   //expect page to have elements
-  page.getByRole("heading", { name: "Log in" });
-  page.getByLabel("Log in").getByText("Username:");
-  page.locator("#loginusername");
-  page.getByLabel("Log in").getByText("Password:");
-  page.locator("#loginpassword");
+  await expect(page.getByRole("heading", { name: "Log in" })).toBeVisible();
+  await expect(page.getByLabel("Log in").getByText("Username:")).toBeVisible();
+  await expect(page.locator("#loginusername")).toBeVisible();
+  await expect(page.getByLabel("Log in").getByText("Password:")).toBeVisible();
+  await expect(page.locator("#loginpassword")).toBeVisible();
 
   //expect page to have buttons
-  page.getByLabel("Log in").getByText("Close");
-  page.getByRole("button", { name: "Log in" });
+  await expect(page.getByLabel("Log in").getByText("Close")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Log in" })).toBeVisible();
   // await page.pause();
 });
