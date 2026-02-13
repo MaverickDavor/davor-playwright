@@ -165,3 +165,18 @@ test("filter Monitors", async ({ page }) => {
       .toBeVisible();
   }
 });
+
+test("add to cart", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/index.html");
+  // Expect a link "to be named" a substring.
+  await page.getByRole("link", { name: "Nexus" }).click();
+  //intercept popup message
+  page.once("dialog", (dialog) => {
+    console.log(`Dialog message: ${dialog.message()}`);
+    dialog.dismiss().catch(() => {});
+  });
+  await page.getByRole("link", { name: "Add to cart" }).click();
+  await page.getByRole("link", { name: "Cart", exact: true }).click();
+  //await page.pause();
+  await expect(page.getByRole("cell", { name: "Nexus" })).toBeVisible();
+});

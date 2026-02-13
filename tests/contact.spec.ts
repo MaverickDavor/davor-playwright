@@ -39,3 +39,20 @@ test("has buttons", async ({ page }) => {
     page.getByRole("button", { name: "Send message" }),
   ).toBeVisible();
 });
+
+test("fill contact form", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/index.html");
+  await page.getByRole("link", { name: "Contact" }).click();
+
+  // Expect a form to cancel and send buttons.
+  await page.locator("#recipient-email").fill("davor.ambrus@endava.com");
+  await page
+    .getByRole("textbox", { name: "Contact Email: Contact Name:" })
+    .fill("Pero");
+  await page
+    .getByRole("textbox", { name: "Message:" })
+    .fill("Gle malu vocku poslije kise, puna je kapi pa se njise");
+  await page.getByRole("button", { name: "Send message" }).click();
+  //not sure how to validate this?
+  await expect(page).toHaveTitle(/STORE/);
+});
