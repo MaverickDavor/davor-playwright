@@ -1,5 +1,26 @@
 import { test, expect } from "@playwright/test";
 
+const phones: string[] = [
+  "Samsung galaxy s6",
+  "Nokia lumia",
+  "Nexus",
+  "Samsung galaxy s7",
+  "Iphone 6 32gb",
+  "Sony xperia z5",
+  "HTC One M9",
+];
+
+const laptops: string[] = [
+  "Sony vaio i5",
+  "Sony vaio i7",
+  "MacBook air",
+  "Dell i7 8gb",
+  "Dell 15.6 Inch",
+  "MacBook Pro",
+];
+
+const monitors: string[] = ["Apple monitor", "ASUS Full HD"];
+
 test("has title", async ({ page }) => {
   await page.goto("https://www.demoblaze.com/index.html");
   //await page.getByRole("link", { name: "Contact" }).click();
@@ -71,4 +92,76 @@ test("has Navigation Sign up", async ({ page }) => {
   // Expect a link "to be named" a substring.
   await expect(page.getByRole("link", { name: "Sign up" })).toBeVisible();
   //await page.pause();
+});
+
+test("filter Phones", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/index.html");
+  //await page.pause();
+  await page.getByRole("link", { name: "Phones" }).click();
+  // Expect a link "to be named" a substring.
+  for (let i = 0; i < phones.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: phones[i] }))
+      .toBeVisible();
+  }
+
+  for (let i = 0; i < laptops.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: laptops[i] }))
+      .not.toBeVisible();
+  }
+
+  for (let i = 0; i < monitors.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: monitors[i] }))
+      .not.toBeVisible();
+  }
+});
+
+test("filter Laptops", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/index.html");
+  //await page.pause();
+  await page.getByRole("link", { name: "Laptops" }).click();
+  // Expect a link "to be named" a substring.
+  for (let i = 0; i < phones.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: phones[i] }))
+      .not.toBeVisible();
+  }
+
+  for (let i = 0; i < laptops.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: laptops[i] }))
+      .toBeVisible();
+  }
+
+  for (let i = 0; i < monitors.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: monitors[i] }))
+      .not.toBeVisible();
+  }
+});
+
+test("filter Monitors", async ({ page }) => {
+  await page.goto("https://www.demoblaze.com/index.html");
+  //await page.pause();
+  await page.getByRole("link", { name: "Monitors" }).click();
+  // Expect a link "to be named" a substring.
+  for (let i = 0; i < phones.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: phones[i] }))
+      .not.toBeVisible();
+  }
+
+  for (let i = 0; i < laptops.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: laptops[i] }))
+      .not.toBeVisible();
+  }
+
+  for (let i = 0; i < monitors.length; i++) {
+    await expect
+      .soft(page.getByRole("heading", { name: monitors[i] }))
+      .toBeVisible();
+  }
 });
