@@ -2,19 +2,52 @@ import { test, expect } from "@playwright/test";
 
 test.describe("Adding to Cart second", () => {
   test("add to bag", async ({ page }) => {
-    page.on("dialog", async (dialog) => {
-      expect(dialog.message()).toBe("Please fill out Name and Creditcard.");
-      await dialog.accept();
-    });
-
     await page.goto("https://www.demoblaze.com/index.html");
+
     // Expect a link "to be named" a substring.
     await page.getByRole("link", { name: "Nexus" }).click();
-    //intercept popup message
 
+    //intercept popup message
+    page.once("dialog", async (dialog) => {
+      expect(dialog.message()).toContain("Product added");
+      await dialog.accept();
+      console.log("Dialog accepted");
+    });
+    await page.pause();
     await page.getByRole("link", { name: "Add to cart" }).click();
     await page.getByRole("link", { name: "Cart", exact: true }).click();
     //await page.pause();
+    await expect(page.getByRole("cell", { name: "Nexus" })).toBeVisible();
+  });
+
+  test("add to cart", async ({ page }) => {
+    async function verifyAlertMessage(page: Page, expectedMessage: string) {
+      // Return a promise that resolves when dialog is handled
+      return new Promise<void>((resolve, reject) => {
+        page.once("dialog", async (dialog) => {
+          console.log(`Dialog appeared with message: "${dialog.message()}"`);
+          try {
+            expect(dialog.type()).toBe("alert");
+            expect(dialog.message()).toContain(expectedMessage);
+            await dialog.accept();
+            resolve(); // Success
+          } catch (error) {
+            await dialog.accept(); // Still dismiss the dialog
+            reject(error); // Propagate the failure
+          }
+        });
+      });
+    }
+
+    await page.goto("https://www.demoblaze.com/index.html");
+    await page.getByRole("link", { name: "Nexus" }).click();
+
+    // Setup handler and wait for it to complete
+    const dialogPromise = verifyAlertMessage(page, "Product added");
+    await page.getByRole("link", { name: "Add to cart" }).click();
+    await dialogPromise; // Wait for dialog verification to complete
+
+    await page.getByRole("link", { name: "Cart", exact: true }).click();
     await expect(page.getByRole("cell", { name: "Nexus" })).toBeVisible();
   });
 });
