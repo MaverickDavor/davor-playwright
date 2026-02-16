@@ -1,4 +1,24 @@
 import { test, expect } from "@playwright/test";
+
+test.describe("Adding to Cart second", () => {
+  test("add to bag", async ({ page }) => {
+    page.on("dialog", async (dialog) => {
+      expect(dialog.message()).toBe("Please fill out Name and Creditcard.");
+      await dialog.accept();
+    });
+
+    await page.goto("https://www.demoblaze.com/index.html");
+    // Expect a link "to be named" a substring.
+    await page.getByRole("link", { name: "Nexus" }).click();
+    //intercept popup message
+
+    await page.getByRole("link", { name: "Add to cart" }).click();
+    await page.getByRole("link", { name: "Cart", exact: true }).click();
+    //await page.pause();
+    await expect(page.getByRole("cell", { name: "Nexus" })).toBeVisible();
+  });
+});
+
 test.describe("Cart Elements check", () => {
   test("has cart", async ({ page }) => {
     await page.goto("https://www.demoblaze.com/index.html");
@@ -57,37 +77,5 @@ test.describe("Cart Elements check", () => {
       .soft(page.getByLabel("Place order").getByText("Close"))
       .toBeVisible();
     await expect(page.getByRole("button", { name: "Purchase" })).toBeVisible();
-  });
-});
-
-test.describe("Adding to Cart", () => {
-  test("add to cart", async ({ page }) => {
-    await page.goto("https://www.demoblaze.com/index.html");
-    // Expect a link "to be named" a substring.
-    await page.getByRole("link", { name: "Nexus" }).click();
-    //intercept popup message
-    /*page.once("dialog", (dialog) => {
-    console.log(`Dialog message: ${dialog.message()}`);
-    dialog.accept();
-  });*/
-    //await page.pause();
-    //await page.getByRole("link", { name: "Add to cart" }).click();
-    // not sure if it works anything
-
-    /*    page.on("dialog", async (dialog) => {
-      //await expect(dialog.message().match("Product added"));
-      //await expect(dialog.message() === "Product added");
-      await dialog.accept("Product added");
-      console.log(`Dialog message is ${dialog.message()}.`);
-    }); */
-
-    const dialogPromise = page.waitForEvent("dialog");
-    await page.getByRole("link", { name: "Add to cart" }).click();
-    const dialog = await dialogPromise;
-    expect.soft(dialog.message()).toContain("Product added");
-    await dialog.accept();
-    await page.getByRole("link", { name: "Cart", exact: true }).click();
-    //await page.pause();
-    await expect(page.getByRole("cell", { name: "Nexus" })).toBeVisible();
   });
 });
