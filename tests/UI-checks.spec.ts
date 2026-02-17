@@ -19,13 +19,6 @@ test.describe("CSS check", () => {
       .toHaveCSS("font-family", "LatoWeb");
   });
 
-  //not working - is it possible to check class name? Is there any purpose
-  test("has class", async ({ page }) => {
-    await expect
-      .soft(page.getByText("PRODUCT STORE Home (current)"))
-      .toHaveCSS("class", "navbar-collapse");
-  });
-
   test("has margin", async ({ page }) => {
     //await page.pause();
     const locator = page.getByRole("link", { name: "PRODUCT STORE" });
