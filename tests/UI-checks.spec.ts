@@ -1,28 +1,44 @@
-import { test, expect } from "@playwright/test";
+import { test, expect, Page, Locator } from "@playwright/test";
+
+export class UICheckPage {
+  readonly page: Page;
+  readonly colorCheck: Locator;
+  readonly fontCheck: Locator;
+  readonly marginCheck: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.colorCheck = page.getByText("PRODUCT STORE Home (current)");
+    this.fontCheck = page.locator("#tbodyid");
+    this.marginCheck = page.getByRole("link", { name: "PRODUCT STORE" });
+  }
+
+  async goto() {
+    await this.page.goto("https://www.demoblaze.com/index.html");
+  }
+}
 
 test.beforeEach("Open start URL", async ({ page }) => {
-  console.log(`Running ${test.info().title}`);
-  await page.goto("https://www.demoblaze.com/index.html");
+  const UICheck = new UICheckPage(page);
+  await UICheck.goto();
 });
 
 test.describe("CSS check", () => {
   test("has color", async ({ page }) => {
+    const UICheck = new UICheckPage(page);
     await expect
-      .soft(page.getByText("PRODUCT STORE Home (current)"))
+      .soft(UICheck.colorCheck)
       .toHaveCSS("color", "rgb(134, 134, 136)");
   });
 
   test("has font", async ({ page }) => {
-    //await page.pause();
-    await expect
-      .soft(page.locator("#tbodyid"))
-      .toHaveCSS("font-family", "LatoWeb");
+    const UICheck = new UICheckPage(page);
+    await expect.soft(UICheck.fontCheck).toHaveCSS("font-family", "LatoWeb");
   });
 
   test("has margin", async ({ page }) => {
-    //await page.pause();
-    const locator = page.getByRole("link", { name: "PRODUCT STORE" });
-    await expect.soft(locator).toHaveCSS("margin-right", "320px");
-    await expect.soft(locator).toHaveCSS("line-height", "30px");
+    const UICheck = new UICheckPage(page);
+    await expect.soft(UICheck.marginCheck).toHaveCSS("margin-right", "320px");
+    await expect.soft(UICheck.marginCheck).toHaveCSS("line-height", "30px");
   });
 });
