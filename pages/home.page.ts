@@ -1,0 +1,31 @@
+import { Locator, Page } from "@playwright/test";
+
+export class HomePage {
+  readonly page: Page;
+  readonly linkPhones: Locator;
+  readonly linkMonitors: Locator;
+  readonly linkLaptops: Locator;
+  readonly navHome: Locator;
+  readonly navContact: Locator;
+  readonly navAbout: Locator;
+  readonly navCart: Locator;
+  readonly navLogin: Locator;
+  readonly navSignup: Locator;
+
+  constructor(page: Page) {
+    this.page = page;
+    this.linkPhones = page.getByRole("link", { name: "Phones" });
+    this.linkLaptops = page.getByRole("link", { name: "Laptops" });
+    this.linkMonitors = page.getByRole("link", { name: "Monitors" });
+    this.navHome = page.getByRole("link", { name: "Home (current)" });
+    this.navContact = page.getByRole("link", { name: "Contact" });
+    this.navAbout = page.getByRole("link", { name: "About Us" });
+    this.navCart = page.getByRole("link", { name: "Cart" });
+    this.navLogin = page.getByRole("link", { name: "Log in" });
+    this.navSignup = page.getByRole("link", { name: "Sign up" });
+  }
+
+  async goto() {
+    await this.page.goto("https://www.demoblaze.com/index.html");
+  }
+}
