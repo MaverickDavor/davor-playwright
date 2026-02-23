@@ -1,6 +1,8 @@
 import { test, expect, Locator, Page } from "@playwright/test";
 import { HomePage } from "../pages/home.page";
+import { phones, monitors, laptops } from "../data/home.data";
 
+/*
 const phones: string[] = [
   "Samsung galaxy s6",
   "Nokia lumia",
@@ -20,7 +22,7 @@ const laptops: string[] = [
   "MacBook Pro",
 ];
 
-const monitors: string[] = ["Apple monitor", "ASUS Full HD"];
+const monitors: string[] = ["Apple monitor", "ASUS Full HD"];*/
 
 test.describe("Home elements check", () => {
   test("has title", async ({ page }) => {
