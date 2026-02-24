@@ -1,4 +1,5 @@
 import { Locator, Page } from "@playwright/test";
+import { HomePage } from "./home.page";
 
 export class CartPage {
   readonly page: Page;
@@ -53,7 +54,9 @@ export class CartPage {
     this.cartPurchaseButton = page.getByRole("button", { name: "Purchase" });
   }
 
-  async goto() {
-    await this.page.goto("https://www.demoblaze.com/index.html");
+  async goto(page: Page) {
+    const homePage = new HomePage(page);
+    await homePage.goto();
+    await homePage.navCart.click();
   }
 }

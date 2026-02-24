@@ -1,6 +1,6 @@
 import { test, expect, Locator, Page } from "@playwright/test";
 import { HomePage } from "../pages/home.page";
-import { phones, monitors, laptops } from "../data/home.data";
+import { devices } from "../data/home.data";
 
 /*
 const phones: string[] = [
@@ -109,7 +109,7 @@ test.describe("Home Filters check", () => {
         .toBeVisible();
     }*/
 
-    for (const phone of phones) {
+    for (const phone of devices[0]) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .toBeVisible();
@@ -120,7 +120,7 @@ test.describe("Home Filters check", () => {
         .soft(page.getByRole("heading", { name: laptops[i] }))
         .not.toBeVisible();
     } */
-    for (const laptop of laptops) {
+    for (const laptop of devices[1]) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .not.toBeVisible();
@@ -131,7 +131,7 @@ test.describe("Home Filters check", () => {
         .soft(page.getByRole("heading", { name: monitors[i] }))
         .not.toBeVisible();
     } */
-    for (const monitor of monitors) {
+    for (const monitor of devices[2]) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .not.toBeVisible();
@@ -144,19 +144,19 @@ test.describe("Home Filters check", () => {
     //await page.pause();
     await home.linkLaptops.click();
     // Expect a link "to be named" a substring.
-    for (const phone of phones) {
+    for (const phone of devices[0]) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .not.toBeVisible();
     }
 
-    for (const laptop of laptops) {
+    for (const laptop of devices[1]) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .toBeVisible();
     }
 
-    for (const monitor of monitors) {
+    for (const monitor of devices[2]) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .not.toBeVisible();
@@ -169,19 +169,19 @@ test.describe("Home Filters check", () => {
     //await page.pause();
     await home.linkMonitors.click();
     // Expect a link "to be named" a substring.
-    for (const phone of phones) {
+    for (const phone of devices[0]) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .not.toBeVisible();
     }
 
-    for (const laptop of laptops) {
+    for (const laptop of devices[1]) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .not.toBeVisible();
     }
 
-    for (const monitor of monitors) {
+    for (const monitor of devices[2]) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .toBeVisible();

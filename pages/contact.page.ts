@@ -37,5 +37,6 @@ export class ContactPage {
 
   async goto() {
     await this.page.goto("https://www.demoblaze.com/index.html");
+    await this.navContact.click({ force: true });
   }
 }

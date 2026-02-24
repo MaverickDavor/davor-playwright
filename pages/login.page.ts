@@ -9,9 +9,11 @@ export class LoginPage {
   readonly fieldPassword: Locator;
   readonly buttonClose: Locator;
   readonly buttonLogin: Locator;
+  readonly pageNav: Locator;
 
   constructor(page: Page) {
     this.page = page;
+    this.pageNav = page.getByRole("link", { name: "Log in" });
     this.loginTitle = page.getByRole("heading", { name: "Log in" });
     this.titleUsername = page.getByLabel("Log in").getByText("Username:");
     this.fieldUsername = page.locator("#loginusername");
@@ -23,6 +25,6 @@ export class LoginPage {
 
   async goto() {
     await this.page.goto("https://www.demoblaze.com/index.html");
-    await this.page.getByRole("link", { name: "Log in" }).click(); // jel ovo praksa ako se poziva samo jednom? Ili bolje u constructor staviu lokatore?
+    await this.pageNav.click(); // jel ovo praksa ako se poziva samo jednom? Ili bolje u constructor staviu lokatore?
   }
 }

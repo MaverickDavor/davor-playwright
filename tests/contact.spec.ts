@@ -2,12 +2,9 @@ import { test, expect, Locator, Page } from "@playwright/test";
 import { ContactPage } from "../pages/contact.page";
 
 test.describe("Contact elements check", () => {
-  test("has contact email", async ({ page }) => {
+  test("has contact email", async ({ page, browserName }) => {
     const contact = new ContactPage(page);
-    //const Home = new HomePage(page);
     await contact.goto();
-    //await Home.navContact.click();
-    await contact.navContact.click();
 
     // Expect a form to have input fields.
     await expect.soft(contact.titleEmail).toBeVisible();
@@ -19,7 +16,6 @@ test.describe("Contact elements check", () => {
   test("has contact name", async ({ page }) => {
     const contact = new ContactPage(page);
     await contact.goto();
-    await contact.navContact.click();
     await expect.soft(contact.titleName).toBeVisible();
     await expect(contact.fieldName).toBeVisible();
   });
@@ -27,7 +23,6 @@ test.describe("Contact elements check", () => {
   test("has message", async ({ page }) => {
     const contact = new ContactPage(page);
     await contact.goto();
-    await contact.navContact.click();
     // Expect a form to have input fields.
     await expect.soft(contact.titleMessage).toBeVisible();
     await expect(contact.fieldMessage).toBeVisible();
@@ -36,7 +31,6 @@ test.describe("Contact elements check", () => {
   test("has buttons", async ({ page }) => {
     const contact = new ContactPage(page);
     await contact.goto();
-    await contact.navContact.click();
     await expect.soft(contact.closeButton).toBeVisible();
     await expect(contact.sendButton).toBeVisible();
   });
@@ -46,7 +40,6 @@ test.describe("Fill Form", () => {
   test("fill contact form", async ({ page }) => {
     const contact = new ContactPage(page);
     await contact.goto();
-    await contact.navContact.click();
     // Expect a form to cancel and send buttons.
     await contact.recipMail.fill("davor.ambrus@endava.com");
     await contact.recipName.fill("Pero");

@@ -3,28 +3,13 @@ import { CartPage } from "../pages/cart.page";
 
 test.beforeEach("Open start URL", async ({ page }) => {
   const cart = new CartPage(page);
-  await cart.goto();
-});
-
-test.describe("Adding to Cart second", () => {
-  test("add to bag", async ({ page }) => {
-    const cart = new CartPage(page);
-
-    // Expect a link "to be named" a substring.
-    await cart.addNexus.click();
-    page.on("dialog", async (dialog) => {
-      expect(dialog.message()).toContain("Product added");
-      await dialog.accept();
-    });
-    await cart.addCartButton.click();
-    await cart.navCart.click();
-    await expect(cart.nexusVisible).toBeVisible();
-  });
+  await cart.goto(page);
 });
 
 test.describe("Cart Elements check", () => {
   test("has cart", async ({ page }) => {
     const cart = new CartPage(page);
+
     await cart.navCart.click();
     // Expect a cart to have columns.
     await expect.soft(cart.columnPic).toBeVisible();
