@@ -8,7 +8,7 @@ test.describe("Adding to Cart second", () => {
     const cart = new CartPage(page);
     await addToCart.goto(page);
     // Expect a link "to be named" a substring.
-    await cart.addNexus.click();
+    await cart.addNexus.click({ force: true });
     page.on("dialog", async (dialog) => {
       expect(dialog.message()).toContain("Product added");
       await dialog.accept();

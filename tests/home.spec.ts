@@ -2,27 +2,9 @@ import { test, expect, Locator, Page } from "@playwright/test";
 import { HomePage } from "../pages/home.page";
 import { devices } from "../data/home.data";
 
-/*
-const phones: string[] = [
-  "Samsung galaxy s6",
-  "Nokia lumia",
-  "Nexus",
-  "Samsung galaxy s7",
-  "Iphone 6 32gb",
-  "Sony xperia z5",
-  "HTC One M9",
-];
-
-const laptops: string[] = [
-  "Sony vaio i5",
-  "Sony vaio i7",
-  "MacBook air",
-  "Dell i7 8gb",
-  "Dell 15.6 Inch",
-  "MacBook Pro",
-];
-
-const monitors: string[] = ["Apple monitor", "ASUS Full HD"];*/
+const phones = devices[0];
+const laptops = devices[1];
+const monitors = devices[2];
 
 test.describe("Home elements check", () => {
   test("has title", async ({ page }) => {
@@ -109,7 +91,7 @@ test.describe("Home Filters check", () => {
         .toBeVisible();
     }*/
 
-    for (const phone of devices[0]) {
+    for (const phone of phones) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .toBeVisible();
@@ -120,7 +102,7 @@ test.describe("Home Filters check", () => {
         .soft(page.getByRole("heading", { name: laptops[i] }))
         .not.toBeVisible();
     } */
-    for (const laptop of devices[1]) {
+    for (const laptop of laptops) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .not.toBeVisible();
@@ -131,7 +113,7 @@ test.describe("Home Filters check", () => {
         .soft(page.getByRole("heading", { name: monitors[i] }))
         .not.toBeVisible();
     } */
-    for (const monitor of devices[2]) {
+    for (const monitor of monitors) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .not.toBeVisible();
@@ -144,19 +126,19 @@ test.describe("Home Filters check", () => {
     //await page.pause();
     await home.linkLaptops.click();
     // Expect a link "to be named" a substring.
-    for (const phone of devices[0]) {
+    for (const phone of phones) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .not.toBeVisible();
     }
 
-    for (const laptop of devices[1]) {
+    for (const laptop of laptops) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .toBeVisible();
     }
 
-    for (const monitor of devices[2]) {
+    for (const monitor of monitors) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .not.toBeVisible();
@@ -169,19 +151,19 @@ test.describe("Home Filters check", () => {
     //await page.pause();
     await home.linkMonitors.click();
     // Expect a link "to be named" a substring.
-    for (const phone of devices[0]) {
+    for (const phone of phones) {
       await expect
         .soft(page.getByRole("heading", { name: phone }))
         .not.toBeVisible();
     }
 
-    for (const laptop of devices[1]) {
+    for (const laptop of laptops) {
       await expect
         .soft(page.getByRole("heading", { name: laptop }))
         .not.toBeVisible();
     }
 
-    for (const monitor of devices[2]) {
+    for (const monitor of monitors) {
       await expect
         .soft(page.getByRole("heading", { name: monitor }))
         .toBeVisible();

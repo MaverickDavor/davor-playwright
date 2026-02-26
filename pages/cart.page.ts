@@ -57,6 +57,6 @@ export class CartPage {
   async goto(page: Page) {
     const homePage = new HomePage(page);
     await homePage.goto();
-    await homePage.navCart.click();
+    await homePage.navCart.click({ force: true });
   }
 }

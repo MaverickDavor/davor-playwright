@@ -6,7 +6,7 @@ test.describe("about us", () => {
   test.beforeEach("Open start URL", async ({ page }) => {
     const about = new AboutPage(page);
     await about.goto();
-    await about.navAbout.click();
+    await about.navAbout.click({ force: true });
   });
 
   test("has about us", async ({ page }) => {

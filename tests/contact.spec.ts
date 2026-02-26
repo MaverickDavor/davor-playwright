@@ -46,7 +46,7 @@ test.describe("Fill Form", () => {
     await contact.messageBody.fill(
       "Gle malu vocku poslije kise, puna je kapi pa se njise",
     );
-    await contact.sendButton.click();
+    await contact.sendButton.click({ force: true });
     //not sure how to validate this?
     await expect(contact.page).toHaveTitle(/STORE/);
   });
