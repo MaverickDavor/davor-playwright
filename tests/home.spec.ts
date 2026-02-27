@@ -1,89 +1,80 @@
-import { test, expect, Locator, Page } from "@playwright/test";
-import { HomePage } from "../pages/home.page";
+import { expect } from "@playwright/test";
+//import { test } from "../fixtures/basePage";
+//import { HomePage } from "../pages/home.page";
 import { devices } from "../data/home.data";
+import { test } from "../fixtures/basePage";
 
 const phones = devices[0];
 const laptops = devices[1];
 const monitors = devices[2];
 
 test.describe("Home elements check", () => {
-  test("has title", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has title", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a title "to contain" a substring.
-    await expect(home.page).toHaveTitle(/STORE/);
+    await expect(homePage.page).toHaveTitle(/STORE/);
   });
 
-  test("has Phones", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Phones", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.linkPhones).toBeVisible();
+    await expect(homePage.linkPhones).toBeVisible();
   });
 
-  test("has Laptops", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Laptops", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.linkLaptops).toBeVisible();
+    await expect(homePage.linkLaptops).toBeVisible();
   });
 
-  test("has Monitors", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Monitors", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.linkMonitors).toBeVisible();
+    await expect(homePage.linkMonitors).toBeVisible();
   });
 
-  test("has Navigation Home", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation Home", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navHome).toBeVisible();
+    await expect(homePage.navHome).toBeVisible();
   });
 
-  test("has Navigation Contact", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation Contact", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navContact).toBeVisible();
+    await expect(homePage.navContact).toBeVisible();
   });
 
-  test("has Navigation About Us", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation About Us", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navAbout).toBeVisible();
+    await expect(homePage.navAbout).toBeVisible();
   });
 
-  test("has Navigation Cart", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation Cart", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navCart).toBeVisible();
+    await expect(homePage.navCart).toBeVisible();
   });
 
-  test("has Navigation Log in", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation Log in", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navLogin).toBeVisible();
+    await expect(homePage.navLogin).toBeVisible();
   });
 
-  test("has Navigation Sign up", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("has Navigation Sign up", async ({ homePage }) => {
+    await homePage.goto();
     // Expect a link "to be named" a substring.
-    await expect(home.navSignup).toBeVisible();
+    await expect(homePage.navSignup).toBeVisible();
   });
 });
 
 test.describe("Home Filters check", () => {
-  test("filter Phones", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("filter Phones", async ({ homePage, page }) => {
+    await homePage.goto();
     //await page.pause();
-    await home.linkPhones.click();
+    await homePage.linkPhones.click();
     // Expect a link "to be named" a substring.
     /*for (let i = 0; i < phones.length; i++) {
       await expect
@@ -120,11 +111,10 @@ test.describe("Home Filters check", () => {
     }
   });
 
-  test("filter Laptops", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("filter Laptops", async ({ homePage, page }) => {
+    await homePage.goto();
     //await page.pause();
-    await home.linkLaptops.click();
+    await homePage.linkLaptops.click();
     // Expect a link "to be named" a substring.
     for (const phone of phones) {
       await expect
@@ -145,11 +135,10 @@ test.describe("Home Filters check", () => {
     }
   });
 
-  test("filter Monitors", async ({ page }) => {
-    const home = new HomePage(page);
-    await home.goto();
+  test("filter Monitors", async ({ homePage, page }) => {
+    await homePage.goto();
     //await page.pause();
-    await home.linkMonitors.click();
+    await homePage.linkMonitors.click();
     // Expect a link "to be named" a substring.
     for (const phone of phones) {
       await expect

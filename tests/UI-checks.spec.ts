@@ -1,27 +1,27 @@
-import { test, expect, Page, Locator } from "@playwright/test";
-import { UICheckPage } from "../pages/UI-checks.page";
+import { expect } from "@playwright/test";
+import { test } from "../fixtures/basePage";
 
-test.beforeEach("Open start URL", async ({ page }) => {
-  const UICheck = new UICheckPage(page);
-  await UICheck.goto(page);
+test.beforeEach("Open start URL", async ({ uiCheckPage, page }) => {
+  await uiCheckPage.goto(page);
 });
 
 test.describe("CSS check", () => {
-  test("has color", async ({ page }) => {
-    const UICheck = new UICheckPage(page);
+  test("has color", async ({ uiCheckPage }) => {
     await expect
-      .soft(UICheck.colorCheck)
+      .soft(uiCheckPage.colorCheck)
       .toHaveCSS("color", "rgb(134, 134, 136)");
   });
 
-  test("has font", async ({ page }) => {
-    const UICheck = new UICheckPage(page);
-    await expect.soft(UICheck.fontCheck).toHaveCSS("font-family", "LatoWeb");
+  test("has font", async ({ uiCheckPage }) => {
+    await expect
+      .soft(uiCheckPage.fontCheck)
+      .toHaveCSS("font-family", "LatoWeb");
   });
 
-  test("has margin", async ({ page }) => {
-    const UICheck = new UICheckPage(page);
-    await expect.soft(UICheck.marginCheck).toHaveCSS("margin-right", "320px");
-    await expect.soft(UICheck.marginCheck).toHaveCSS("line-height", "30px");
+  test("has margin", async ({ uiCheckPage }) => {
+    await expect
+      .soft(uiCheckPage.marginCheck)
+      .toHaveCSS("margin-right", "320px");
+    await expect.soft(uiCheckPage.marginCheck).toHaveCSS("line-height", "30px");
   });
 });

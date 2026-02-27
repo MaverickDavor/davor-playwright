@@ -1,53 +1,49 @@
-import { test, expect, Locator, Page } from "@playwright/test";
-import { ContactPage } from "../pages/contact.page";
+import { expect } from "@playwright/test";
+//import { ContactPage } from "../pages/contact.page";
+import { test } from "../fixtures/basePage";
 
 test.describe("Contact elements check", () => {
-  test("has contact email", async ({ page, browserName }) => {
-    const contact = new ContactPage(page);
-    await contact.goto();
+  test("has contact email", async ({ contactPage }) => {
+    await contactPage.goto();
 
     // Expect a form to have input fields.
-    await expect.soft(contact.titleEmail).toBeVisible();
-    await expect(contact.fieldEmail).toBeVisible();
+    await expect.soft(contactPage.titleEmail).toBeVisible();
+    await expect(contactPage.fieldEmail).toBeVisible();
 
     //await page.pause();
   });
 
-  test("has contact name", async ({ page }) => {
-    const contact = new ContactPage(page);
-    await contact.goto();
-    await expect.soft(contact.titleName).toBeVisible();
-    await expect(contact.fieldName).toBeVisible();
+  test("has contact name", async ({ contactPage }) => {
+    await contactPage.goto();
+    await expect.soft(contactPage.titleName).toBeVisible();
+    await expect(contactPage.fieldName).toBeVisible();
   });
 
-  test("has message", async ({ page }) => {
-    const contact = new ContactPage(page);
-    await contact.goto();
+  test("has message", async ({ contactPage }) => {
+    await contactPage.goto();
     // Expect a form to have input fields.
-    await expect.soft(contact.titleMessage).toBeVisible();
-    await expect(contact.fieldMessage).toBeVisible();
+    await expect.soft(contactPage.titleMessage).toBeVisible();
+    await expect(contactPage.fieldMessage).toBeVisible();
   });
 
-  test("has buttons", async ({ page }) => {
-    const contact = new ContactPage(page);
-    await contact.goto();
-    await expect.soft(contact.closeButton).toBeVisible();
-    await expect(contact.sendButton).toBeVisible();
+  test("has buttons", async ({ contactPage }) => {
+    await contactPage.goto();
+    await expect.soft(contactPage.closeButton).toBeVisible();
+    await expect(contactPage.sendButton).toBeVisible();
   });
 });
 
 test.describe("Fill Form", () => {
-  test("fill contact form", async ({ page }) => {
-    const contact = new ContactPage(page);
-    await contact.goto();
+  test("fill contact form", async ({ contactPage }) => {
+    await contactPage.goto();
     // Expect a form to cancel and send buttons.
-    await contact.recipMail.fill("davor.ambrus@endava.com");
-    await contact.recipName.fill("Pero");
-    await contact.messageBody.fill(
+    await contactPage.recipMail.fill("davor.ambrus@endava.com");
+    await contactPage.recipName.fill("Pero");
+    await contactPage.messageBody.fill(
       "Gle malu vocku poslije kise, puna je kapi pa se njise",
     );
-    await contact.sendButton.click({ force: true });
+    await contactPage.sendButton.click({ force: true });
     //not sure how to validate this?
-    await expect(contact.page).toHaveTitle(/STORE/);
+    await expect(contactPage.page).toHaveTitle(/STORE/);
   });
 });
