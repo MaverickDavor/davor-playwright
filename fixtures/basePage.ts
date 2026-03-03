@@ -44,4 +44,15 @@ export const test = base.extend<{
   uiCheckPage: async ({ page }, use) => {
     await use(new UICheckPage(page));
   },
+  /*
+  page: async ({ page }, use) => {
+    page.on("load", async () => {
+      await page.addStyleTag({
+        content: `::-webkit-scrollbar { display: none !important; }
+                  * { scrollbar-width: none !important; overflow: -moz-scrollbars-none !important; }
+                  html, body { overflow: hidden !important; }`,
+      });
+    });
+    await use(page);
+  },*/
 });

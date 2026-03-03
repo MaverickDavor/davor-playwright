@@ -11,6 +11,11 @@ export class HomePage {
   readonly navCart: Locator;
   readonly navLogin: Locator;
   readonly navSignup: Locator;
+  readonly slider: Locator;
+  readonly sidebar: Locator;
+  readonly navbar: Locator;
+  readonly body: Locator;
+  readonly footer: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -23,6 +28,14 @@ export class HomePage {
     this.navCart = page.getByRole("link", { name: "Cart" });
     this.navLogin = page.getByRole("link", { name: "Log in" });
     this.navSignup = page.getByRole("link", { name: "Sign up" });
+    this.slider = page.getByRole("img", { name: "First slide" });
+    this.sidebar = page
+      .locator("div")
+      .filter({ hasText: "CATEGORIES Phones Laptops" })
+      .nth(2);
+    this.navbar = page.locator("#navbarExample");
+    this.body = page.locator("#tbodyid");
+    this.footer = page.locator("#footc");
   }
 
   async goto() {
