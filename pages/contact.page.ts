@@ -14,6 +14,7 @@ export class ContactPage {
   readonly recipMail: Locator;
   readonly recipName: Locator;
   readonly messageBody: Locator;
+  readonly dialogBody: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -33,6 +34,7 @@ export class ContactPage {
       name: "Contact Email: Contact Name:",
     });
     this.messageBody = page.getByRole("textbox", { name: "Message:" });
+    this.dialogBody = page.getByRole("dialog", { name: "New message" });
   }
 
   async goto() {

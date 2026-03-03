@@ -5,6 +5,7 @@ export class AboutPage {
   readonly poster: Locator;
   readonly closeButton: Locator;
   readonly navAbout: Locator;
+  readonly videoModal: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -13,6 +14,7 @@ export class AboutPage {
       .locator("#videoModal")
       .getByText("Close", { exact: true });
     this.navAbout = page.getByRole("link", { name: "About us" });
+    this.videoModal = page.locator("#videoModal");
   }
 
   async goto() {

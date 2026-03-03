@@ -9,7 +9,7 @@ const laptops = devices[1];
 const monitors = devices[2];
 
 test.describe("Home elements check", () => {
-  test("has title", async ({ homePage }) => {
+  test("has title", async ({ homePage, page }) => {
     await homePage.goto();
     // Expect a title "to contain" a substring.
     await expect(homePage.page).toHaveTitle(/STORE/);
