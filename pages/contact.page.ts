@@ -34,7 +34,7 @@ export class ContactPage {
       name: "Contact Email: Contact Name:",
     });
     this.messageBody = page.getByRole("textbox", { name: "Message:" });
-    this.dialogBody = page.getByRole("dialog", { name: "New message" });
+    this.dialogBody = page.getByText("New message × Contact Email:");
   }
 
   async goto() {
