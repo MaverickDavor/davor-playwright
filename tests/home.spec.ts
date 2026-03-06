@@ -1,4 +1,4 @@
-import { expect } from "@playwright/test";
+import { expect, request } from "@playwright/test";
 //import { test } from "../fixtures/basePage";
 //import { HomePage } from "../pages/home.page";
 import { devices } from "../data/home.data";
@@ -157,5 +157,63 @@ test.describe("Home Filters check", () => {
         .soft(page.getByRole("heading", { name: monitor }))
         .toBeVisible();
     }
+  });
+});
+
+test.describe("Integration tests", () => {
+  test("phones filter request check", async ({ homePage, page }) => {
+    await homePage.goto();
+    //await page.pause();
+    page.on("request", (request) => {
+      if (request.url().includes("/bycat")) {
+        expect(request.postDataJSON()).toEqual({
+          cat: "phone",
+        });
+        console.log(request.postDataJSON());
+      }
+    });
+    await homePage.linkPhones.click();
+  });
+
+  test("laptops filter request check", async ({ homePage, page }) => {
+    await homePage.goto();
+    //await page.pause();
+    page.on("request", (request) => {
+      if (request.url().includes("/bycat")) {
+        expect(request.postDataJSON()).toEqual({
+          cat: "notebook",
+        });
+        console.log(request.postDataJSON());
+      }
+    });
+    await homePage.linkLaptops.click();
+  });
+
+  test("monitors filter request check", async ({ homePage, page }) => {
+    await homePage.goto();
+    //await page.pause();
+    page.on("request", (request) => {
+      if (request.url().includes("/bycat")) {
+        expect(request.postDataJSON()).toEqual({
+          cat: "monitor",
+        });
+        console.log(request.postDataJSON());
+      }
+    });
+    await homePage.linkMonitors.click();
+  });
+
+  test("samsung galaxy s6", async ({ homePage, page }) => {
+    await homePage.goto();
+    //await page.pause();
+    page.on("request", (request) => {
+      if (request.url().includes("/view")) {
+        expect(request.postDataJSON()).toEqual({
+          cat: "123",
+        });
+        console.log(request.postDataJSON());
+      }
+    });
+    await homePage.galaxyS6.click();
   });
 });

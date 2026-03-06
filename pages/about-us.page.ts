@@ -14,7 +14,7 @@ export class AboutPage {
       .locator("#videoModal")
       .getByText("Close", { exact: true });
     this.navAbout = page.getByRole("link", { name: "About us" });
-    this.videoModal = page.locator("#videoModal");
+    this.videoModal = page.getByText("About us × Video Player is");
   }
 
   async goto() {
