@@ -203,9 +203,10 @@ test.describe("Integration tests", () => {
     await homePage.linkMonitors.click();
   });
 
-  test("samsung galaxy s6", async ({ homePage, page }) => {
+  test.only("samsung galaxy s6", async ({ homePage, page }) => {
     await homePage.goto();
     //await page.pause();
+
     page.on("request", (request) => {
       if (request.url().includes("/view")) {
         expect(request.postDataJSON()).toEqual({

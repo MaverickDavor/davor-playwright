@@ -18,7 +18,8 @@ test.describe("Visual elements check", () => {
   test("sidebar visual", async ({ homePage, page }) => {
     await homePage.goto();
     await page.addStyleTag({
-      content: `html, body { overflow: hidden !important; }`,
+      content: `html, body { overflow: hidden !important; } 
+      * { box-shadow: none !important; text-shadow: none !important; }`,
     });
     await expect(homePage.sidebar).toHaveScreenshot();
   });
