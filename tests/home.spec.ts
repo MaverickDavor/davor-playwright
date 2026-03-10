@@ -206,15 +206,15 @@ test.describe("Integration tests", () => {
   test.only("samsung galaxy s6", async ({ homePage, page }) => {
     await homePage.goto();
     //await page.pause();
+    let body: String;
 
     page.on("request", (request) => {
-      if (request.url().includes("/view")) {
-        expect(request.postDataJSON()).toEqual({
-          cat: "123",
-        });
-        console.log(request.postDataJSON());
+      if (request.url().includes("api.demoblaze.com/view")) {
+        body = request.postDataJSON();
+        console.log("This is log listener" + request.postData());
       }
     });
     await homePage.galaxyS6.click();
+    await expect.poll(() => body).toEqual({ id: "1" });
   });
 });
