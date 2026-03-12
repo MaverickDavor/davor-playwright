@@ -18,14 +18,3 @@ export const devices: string[][] = [
   ],
   ["Apple monitor", "ASUS Full HD"],
 ];
-/*
-export const laptops: string[] = [
-  "Sony vaio i5",
-  "Sony vaio i7",
-  "MacBook air",
-  "Dell i7 8gb",
-  "Dell 15.6 Inch",
-  "MacBook Pro",
-];
-
-export const monitors: string[] = ["Apple monitor", "ASUS Full HD"];*/

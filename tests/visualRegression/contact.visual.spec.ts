@@ -7,7 +7,7 @@ test.describe("Visual elements check Contact", () => {
     await page.pause();
     //this hides vertical scrollbar
     await page.addStyleTag({
-      content: `html, body { overflow: hidden !important; }`,
+      content: `html, body { overflow: hidden !important; } * { box-shadow: none !important; text-shadow: none !important; }`,
     });
     await expect(contactPage.dialogBody).toHaveScreenshot();
   });

@@ -17,6 +17,7 @@ export class HomePage {
   readonly body: Locator;
   readonly footer: Locator;
   readonly galaxyS6: Locator;
+  readonly nexus6: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -38,6 +39,7 @@ export class HomePage {
     this.body = page.locator("#tbodyid");
     this.footer = page.locator("#footc");
     this.galaxyS6 = page.getByRole("link", { name: "Samsung galaxy s6" });
+    this.nexus6 = page.getByRole("link", { name: "Nexus" });
   }
 
   async goto() {

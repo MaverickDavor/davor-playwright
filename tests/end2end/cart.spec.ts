@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
-import { CartPage } from "../pages/cart.page";
-import { test } from "../fixtures/basePage";
+import { CartPage } from "../../pages/cart.page";
+import { test } from "../../fixtures/basePage";
 
 test.beforeEach("Open start URL", async ({ cartPage, page }) => {
   await cartPage.goto(page);

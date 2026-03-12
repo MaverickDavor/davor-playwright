@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 //import { ContactPage } from "../pages/contact.page";
-import { test } from "../fixtures/basePage";
+import { test } from "../../fixtures/basePage";
 
 test.describe("Contact elements check", () => {
   test("has contact email", async ({ contactPage }) => {

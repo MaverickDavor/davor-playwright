@@ -1,8 +1,8 @@
 import { expect, request } from "@playwright/test";
 //import { test } from "../fixtures/basePage";
 //import { HomePage } from "../pages/home.page";
-import { devices } from "../data/home.data";
-import { test } from "../fixtures/basePage";
+import { devices } from "../../data/home.data";
+import { test } from "../../fixtures/basePage";
 
 const phones = devices[0];
 const laptops = devices[1];
@@ -203,7 +203,7 @@ test.describe("Integration tests", () => {
     await homePage.linkMonitors.click();
   });
 
-  test.only("samsung galaxy s6", async ({ homePage, page }) => {
+  test("samsung galaxy s6", async ({ homePage, page }) => {
     await homePage.goto();
     //await page.pause();
     let body: String;
@@ -211,7 +211,7 @@ test.describe("Integration tests", () => {
     page.on("request", (request) => {
       if (request.url().includes("api.demoblaze.com/view")) {
         body = request.postDataJSON();
-        console.log("This is log listener" + request.postData());
+        console.log("This is log listener" + body);
       }
     });
     await homePage.galaxyS6.click();

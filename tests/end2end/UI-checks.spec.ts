@@ -1,5 +1,5 @@
 import { expect } from "@playwright/test";
-import { test } from "../fixtures/basePage";
+import { test } from "../../fixtures/basePage";
 
 test.beforeEach("Open start URL", async ({ uiCheckPage, page }) => {
   await uiCheckPage.goto(page);

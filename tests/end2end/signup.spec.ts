@@ -1,6 +1,6 @@
 import { expect } from "@playwright/test";
 //import { SignupPage } from "../pages/signup.page";
-import { test } from "../fixtures/basePage";
+import { test } from "../../fixtures/basePage";
 
 test.describe("Sign Up", () => {
   test("has signup", async ({ signupPage }) => {
