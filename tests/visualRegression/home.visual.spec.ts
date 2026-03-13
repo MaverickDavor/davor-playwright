@@ -27,7 +27,8 @@ test.describe("Visual elements check", () => {
   test("navbar visual", async ({ homePage, page }) => {
     await homePage.goto();
     await page.addStyleTag({
-      content: `html, body { overflow: hidden !important; }`,
+      content: `html, body { overflow: hidden !important; }
+      * { box-shadow: none !important; text-shadow: none !important; }`,
     });
     await expect(homePage.navbar).toHaveScreenshot();
   });
@@ -35,7 +36,8 @@ test.describe("Visual elements check", () => {
   test("body visual", async ({ homePage, page }) => {
     await homePage.goto();
     await page.addStyleTag({
-      content: `html, body { overflow: hidden !important; }`,
+      content: `html, body { overflow: hidden !important; }
+      * { box-shadow: none !important; text-shadow: none !important; }`,
     });
     await expect(homePage.body).toHaveScreenshot();
   });
@@ -43,7 +45,8 @@ test.describe("Visual elements check", () => {
   test("footer visual", async ({ homePage, page }) => {
     await homePage.goto();
     await page.addStyleTag({
-      content: `html, body { overflow: hidden !important; }`,
+      content: `html, body { overflow: hidden !important; }
+      * { box-shadow: none !important; text-shadow: none !important; }`,
     });
     await expect(homePage.footer).toHaveScreenshot();
   });

@@ -1,13 +1,12 @@
-export const phonesMocked = {
+export const phonesOriginal = {
   Items: [
     {
       cat: "phone",
-      desc: "Momčad Diega Simeonea povela je 3:0 nakon samo petnaest minuta golovima Marcosa Llorentea, Antoinea Griezmanna i Juliana Álvareza. Samo dvije minute nakon trećeg gola, menadžer Igor Tudor odlučio je zamijeniti Kinskog, koji je teren napustio u suzama. Umjesto njega ušao je Guglielmo Vicario, standardni vratar koji nije propustio nijednu utakmicu od spomenutog poraza u kupu 29. listopada. Odluku o tako ranoj izmjeni komentirao je legendarni danski vratar Peter Schmeichel, koji je u analizi utakmice za CBS Sports oštro osudio Tudorov potez. Kad god se u budućnosti spomene njegovo ime, cijeli nogometni svijet sjećat će se ovog trenutka. Trebali su stati uz njega, barem do poluvremena. Tudor mu je potpuno uništio karijeru. Stvarno mi ga je žao, izjavio je Schmeichel.",
+      desc: "The Samsung Galaxy S6 is powered by 1.5GHz octa-core Samsung Exynos 7420\n processor and it comes with 3GB of RAM. The phone packs 32GB of \ninternal storage cannot be expanded. ",
       id: 1,
       img: "imgs/galaxy_s6.jpg",
-      price: 360000000000000000000000.0,
-      title:
-        "Galaxy banana jabuka kaki kruška šljiva naranča limun luk krumpir paprika salata krastavac papagaj kokoš pile jaje sir brašno ulje ocat riža kava",
+      price: 360.0,
+      title: "Samsung galaxy s6",
     },
     {
       cat: "phone",
@@ -15,7 +14,7 @@ export const phonesMocked = {
       id: 2,
       img: "imgs/Lumia_1520.jpg",
       price: 820.0,
-      title: "Nokia ne proizvodi se više",
+      title: "Nokia lumia 1520",
     },
     {
       cat: "phone",
@@ -23,7 +22,7 @@ export const phonesMocked = {
       id: 3,
       img: "imgs/Nexus_6.jpg",
       price: 650.0,
-      title: "Pixel izašao",
+      title: "Nexus 6",
     },
     {
       cat: "phone",
@@ -31,7 +30,7 @@ export const phonesMocked = {
       id: 4,
       img: "imgs/galaxy_s6.jpg",
       price: 800.0,
-      title: "Zaboravljeni galaxy",
+      title: "Samsung galaxy s7",
     },
     {
       cat: "phone",
@@ -39,7 +38,7 @@ export const phonesMocked = {
       id: 5,
       img: "imgs/iphone_6.jpg",
       price: 790.0,
-      title: "Smijeh",
+      title: "Iphone 6 32gb",
     },
     {
       cat: "phone",
@@ -47,7 +46,7 @@ export const phonesMocked = {
       id: 6,
       img: "imgs/xperia_z5.jpg",
       price: 320.0,
-      title: "Izumrlo",
+      title: "Sony xperia z5",
     },
     {
       cat: "phone",
@@ -55,19 +54,7 @@ export const phonesMocked = {
       id: 7,
       img: "imgs/HTC_M9.jpg",
       price: 700.0,
-      title: "Ne postoji više",
+      title: "HTC One M9",
     },
   ],
 };
-
-/*
-export const laptops: string[] = [
-  "Sony vaio i5",
-  "Sony vaio i7",
-  "MacBook air",
-  "Dell i7 8gb",
-  "Dell 15.6 Inch",
-  "MacBook Pro",
-];
-
-export const monitors: string[] = ["Apple monitor", "ASUS Full HD"];*/
