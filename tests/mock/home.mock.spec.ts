@@ -2,12 +2,10 @@ import { expect, request } from "@playwright/test";
 import { phonesOriginal } from "../../data/phones-mock.data";
 import { test } from "../../fixtures/basePage";
 
-const phonesMockedNokia = {
-  ...phonesOriginal,
-  Items: phonesOriginal.Items.map((item) =>
-    item.id === 2 ? { ...item, price: 450.0, title: "Nokia 3310" } : item,
-  ),
-};
+// const phonesMockedNokia = {
+//   ...phonesOriginal,
+//   Items: [{ ...phonesOriginal.Items[1], price: 450 }],
+// };
 
 const phonesMockedNexus = {
   ...phonesOriginal,
@@ -43,6 +41,13 @@ test.describe("Device mock data", () => {
 
   test("mock data nokia", async ({ homePage, page }) => {
     // Expect a title "to contain" a substring.
+    const phonesMockedNokia = {
+      ...phonesOriginal,
+      Items: phonesOriginal.Items.map((item) =>
+        item.id === 2 ? { ...item, price: 450.0, title: "Nokia 3310" } : item,
+      ),
+    };
+
     await page.route("**/api.demoblaze.com/bycat", async (route) => {
       await route.fulfill({
         status: 200,
@@ -52,7 +57,7 @@ test.describe("Device mock data", () => {
     });
     await homePage.goto();
     await homePage.linkPhones.click();
-    await page.pause();
+    //await page.pause();
     await expect(page.locator(".card-block").first()).toContainText(
       "Samsung Galaxy S6 is powered by 1.5GH",
     );
@@ -69,7 +74,7 @@ test.describe("Device mock data", () => {
     });
     await homePage.goto();
     await homePage.linkPhones.click();
-    //await page.pause();
+    await page.pause();
     await expect(
       page.locator("div").filter({ hasText: "Đe je pixel$" }).nth(4),
     ).toContainText("The Motorola Google Nexus 6 is powered by 2.7GHz");

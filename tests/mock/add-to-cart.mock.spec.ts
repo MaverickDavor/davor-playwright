@@ -6,11 +6,13 @@ import { phoneInCart } from "../../data/cart-mock.data";
 
 test.describe("Mocking cart data", () => {
   test("phone mocked in cart", async ({ addToCartPage, cartPage, page }) => {
+    const phoneModified = { ...phoneInCart, price: 900.0 };
+
     await page.route("**/api.demoblaze.com/view", async (route) => {
       await route.fulfill({
         status: 200,
         contentType: "application/json",
-        body: JSON.stringify(phoneInCart),
+        body: JSON.stringify(phoneModified),
       });
     });
 
@@ -23,7 +25,7 @@ test.describe("Mocking cart data", () => {
     });
     await cartPage.addCartButton.click();
     await cartPage.navCart.click();
-    //await page.pause();
+    await page.pause();
     await expect(cartPage.nexusVisible).toBeVisible();
   });
 });
