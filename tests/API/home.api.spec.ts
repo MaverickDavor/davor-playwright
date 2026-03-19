@@ -59,7 +59,7 @@ test.describe("Home api check", () => {
 
     for (const phone of phones) {
       expect.soft(responseTitles).toContain(phone);
-      console.log(responseTitles, phone);
+      //console.log(responseTitles, phone);
     }
   });
 
@@ -86,7 +86,7 @@ test.describe("Home api check", () => {
 
     for (const laptop of laptops) {
       expect.soft(responseTitles).toContain(laptop);
-      console.log(responseTitles, laptop);
+      //console.log(responseTitles, laptop);
     }
   });
 
@@ -113,7 +113,7 @@ test.describe("Home api check", () => {
 
     for (const monitor of monitors) {
       expect.soft(responseTitles).toContain(monitor);
-      console.log(responseTitles, monitor);
+      //console.log(responseTitles, monitor);
     }
   });
 
