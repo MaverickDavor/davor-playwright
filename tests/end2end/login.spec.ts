@@ -3,7 +3,7 @@ import { expect } from "@playwright/test";
 import { test } from "../../fixtures/basePage";
 
 test.describe("Login", () => {
-  test.only("successful login elements", async ({ loginPage, page }) => {
+  test("successful login elements", async ({ loginPage, page }) => {
     await loginPage.goto();
     //expect page to have elements
     await expect.soft(loginPage.loginTitle).toBeVisible();
