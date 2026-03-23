@@ -1,5 +1,6 @@
 import { defineConfig, devices } from "@playwright/test";
-
+import path from "path";
+export const STORAGE_STATE = path.join(__dirname, "tests/setup/data.json");
 /**
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
@@ -35,6 +36,11 @@ export default defineConfig({
   /* Configure projects for major browsers */
   projects: [
     {
+      name: "setup",
+      testDir: "./",
+      testMatch: "global-setup.ts",
+    },
+    {
       name: "chromium",
       use: {
         ...devices["Desktop Chrome"],
@@ -42,18 +48,22 @@ export default defineConfig({
         launchOptions: {
           args: ["--enable-features=OverlayScrollbar"],
         },
+        storageState: STORAGE_STATE,
       },
-    } /*
+      dependencies: ["setup"],
+    },
+
+    /*
 
     {
       name: "firefox",
       use: { ...devices["Desktop Firefox"] },
     },
-    /*
+    
     {
       name: "webkit",
       use: { ...devices["Desktop Safari"] },
-    },*/,
+    },*/
 
     /* Test against mobile viewports. */
     // {

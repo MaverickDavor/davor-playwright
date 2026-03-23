@@ -12,6 +12,7 @@ test.describe("Home elements check", () => {
   test("has title", async ({ homePage, page }) => {
     await homePage.goto();
     // Expect a title "to contain" a substring.
+    //await page.pause();
     await expect(homePage.page).toHaveTitle(/STORE/);
   });
 
