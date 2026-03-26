@@ -6,15 +6,14 @@ test.describe("Login", () => {
   test("successful login elements", async ({ loginPage, page }) => {
     await loginPage.goto();
     //expect page to have elements
-    await expect.soft(loginPage.loginTitle).toBeVisible();
-    await expect.soft(loginPage.titleUsername).toBeVisible();
-    await expect.soft(loginPage.fieldUsername).toBeVisible();
-    await expect.soft(loginPage.titlePassword).toBeVisible();
-    await expect.soft(loginPage.fieldPassword).toBeVisible();
-    await page.pause();
+    await expect.soft(loginPage.loginTitle).toBeHidden();
+    await expect.soft(loginPage.titleUsername).toBeHidden();
+    await expect.soft(loginPage.fieldUsername).toBeHidden();
+    await expect.soft(loginPage.titlePassword).toBeHidden();
+    await expect.soft(loginPage.fieldPassword).toBeHidden();
     //expect page to have buttons
-    await expect.soft(loginPage.buttonClose).toBeVisible();
-    await expect(loginPage.buttonLogin).toBeVisible();
+    await expect.soft(loginPage.buttonClose).toBeHidden();
+    await expect(loginPage.buttonLogin).toBeHidden();
     // await page.pause();
   });
 

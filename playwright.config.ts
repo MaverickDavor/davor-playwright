@@ -53,6 +53,40 @@ export default defineConfig({
       dependencies: ["setup"],
     },
 
+    {
+      name: "visual-regression",
+      testDir: "./tests/visualRegression/",
+      testMatch: "*",
+      use: {
+        ...devices["Desktop Chrome"],
+        viewport: { width: 1280, height: 800 },
+        launchOptions: {
+          args: ["--enable-features=OverlayScrollbar"],
+        },
+      },
+    },
+
+    {
+      name: "api-testing",
+      testDir: "./tests/API/",
+      testMatch: "*",
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: STORAGE_STATE,
+      },
+    },
+
+    {
+      name: "logged-in",
+      testDir: "./tests/end2end/",
+      testMatch: "login.spec.ts",
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: STORAGE_STATE,
+      },
+      dependencies: ["setup"],
+    },
+
     /*
 
     {
