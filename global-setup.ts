@@ -1,11 +1,14 @@
 import { test as setup } from "./fixtures/basePage";
 import { STORAGE_STATE } from "./playwright.config";
+import "dotenv/config";
 
 setup("login", async ({ loginPage, page }) => {
   await loginPage.goto();
   //expect page to have elements
-  await loginPage.fieldUsername.fill("vnovacki");
-  await loginPage.fieldPassword.fill("test.123");
+  console.log(process.env.USERNAME);
+  console.log(process.env.PASSWORD);
+  await loginPage.fieldUsername.fill(process.env.USER as string);
+  await loginPage.fieldPassword.fill(process.env.PASSWORD as string);
   //await page.pause();
   await loginPage.buttonLogin.click();
 

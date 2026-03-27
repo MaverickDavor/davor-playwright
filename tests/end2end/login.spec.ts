@@ -4,7 +4,7 @@ import { test } from "../../fixtures/basePage";
 
 test.describe("Login", () => {
   test("successful login elements", async ({ loginPage, page }) => {
-    await loginPage.goto();
+    await page.goto("https://www.demoblaze.com/index.html");
     //expect page to have elements
     await expect.soft(loginPage.loginTitle).toBeHidden();
     await expect.soft(loginPage.titleUsername).toBeHidden();
@@ -17,7 +17,7 @@ test.describe("Login", () => {
     // await page.pause();
   });
 
-  test("successful login check", async ({ page }) => {
+  test.only("successful login check", async ({ page }) => {
     await page.goto("https://www.demoblaze.com/index.html");
     //expect page to have elements
     await expect(page.getByText("welcome vnovacki")).toBeVisible();
