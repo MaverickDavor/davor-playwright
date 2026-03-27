@@ -20,7 +20,7 @@ test.describe("Login", () => {
   test("successful login check", async ({ page }) => {
     await page.goto("https://www.demoblaze.com/index.html");
     //expect page to have elements
-    await expect(page.getByText("welcome vnovacki")).toBeVisible();
+    await expect(page.getByText("welcome maverick25")).toBeVisible();
 
     // await page.pause();
   });
