@@ -17,7 +17,7 @@ test.describe("Login", () => {
     // await page.pause();
   });
 
-  test.only("successful logout", async ({ loginPage, page }) => {
+  test("successful logout", async ({ loginPage, page }) => {
     await page.goto("https://www.demoblaze.com/index.html");
     //expect page to have elements
     await expect.soft(page.getByText("welcome maverick25")).toBeVisible();
