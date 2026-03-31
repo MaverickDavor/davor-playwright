@@ -58,8 +58,8 @@ test.describe("Device mock data", () => {
     await homePage.goto();
     await homePage.linkPhones.click();
     //await page.pause();
-    await expect(page.locator(".card-block").first()).toContainText(
-      "Samsung Galaxy S6 is powered by 1.5GH",
+    await expect(page.getByRole("heading", { name: "Nokia" })).toContainText(
+      "Nokia 3310",
     );
   });
 
@@ -74,7 +74,7 @@ test.describe("Device mock data", () => {
     });
     await homePage.goto();
     await homePage.linkPhones.click();
-    await page.pause();
+    //await page.pause();
     await expect(
       page.locator("div").filter({ hasText: "Đe je pixel$" }).nth(4),
     ).toContainText("The Motorola Google Nexus 6 is powered by 2.7GHz");

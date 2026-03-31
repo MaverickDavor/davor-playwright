@@ -25,7 +25,7 @@ test.describe("Mocking cart data", () => {
     });
     await cartPage.addCartButton.click();
     await cartPage.navCart.click();
-    await page.pause();
-    await expect(cartPage.nexusVisible).toBeVisible();
+    //await page.pause();
+    await expect(cartPage.modifiedPrice).toBeVisible();
   });
 });

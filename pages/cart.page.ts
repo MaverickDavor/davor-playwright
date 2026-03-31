@@ -26,6 +26,7 @@ export class CartPage {
   readonly cartYearField: Locator;
   readonly cartCloseButton: Locator;
   readonly cartPurchaseButton: Locator;
+  readonly modifiedPrice: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -52,6 +53,7 @@ export class CartPage {
     this.cartYearField = page.getByRole("textbox", { name: "Year:" });
     this.cartCloseButton = page.getByLabel("Place order").getByText("Close");
     this.cartPurchaseButton = page.getByRole("button", { name: "Purchase" });
+    this.modifiedPrice = page.getByRole("cell", { name: "900" }).first();
   }
 
   async goto(page: Page) {

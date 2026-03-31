@@ -8,8 +8,8 @@ const password = process.env.PASSWORD;
 setup("login", async ({ loginPage, page }) => {
   await loginPage.goto();
   //expect page to have elements
-  console.log(process.env.USERNAME);
-  console.log(process.env.PASSWORD);
+  //console.log(process.env.USER);
+  //console.log(process.env.PASSWORD);
   await loginPage.fieldUsername.fill(username as string);
   await loginPage.fieldPassword.fill(password as string);
   //await page.pause();

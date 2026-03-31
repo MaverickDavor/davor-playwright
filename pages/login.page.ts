@@ -11,6 +11,8 @@ export class LoginPage {
   readonly buttonLogin: Locator;
   readonly pageNav: Locator;
   readonly logged: Locator;
+  readonly logOut: Locator;
+  readonly logIn: Locator;
 
   constructor(page: Page) {
     this.page = page;
@@ -21,8 +23,10 @@ export class LoginPage {
     this.titlePassword = page.getByLabel("Log in").getByText("Password:");
     this.fieldPassword = page.locator("#loginpassword");
     this.buttonClose = page.getByLabel("Log in").getByText("Close");
-    this.buttonLogin = page.getByRole("button", { name: "Log in" });
-    this.logged = page.getByRole("link", { name: "Welcome vnovacki" });
+    this.buttonLogin = page.getByRole("button", { name: "Log in" }); 
+    this.logged = page.getByRole("link", { name: "Welcome maverick25" });
+    this.logOut = page.getByRole("link", { name: "Log out" });
+    this.logIn = page.getByRole('link', { name: 'Log in' });
   }
 
   async goto() {
