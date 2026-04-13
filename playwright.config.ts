@@ -72,7 +72,6 @@ export default defineConfig({
       testMatch: "*",
       use: {
         ...devices["Desktop Chrome"],
-        storageState: STORAGE_STATE,
       },
     },
 
@@ -93,7 +92,6 @@ export default defineConfig({
       testMatch: "*",
       use: {
         ...devices["Desktop Chrome"],
-        storageState: STORAGE_STATE,
       },
     },
     /*

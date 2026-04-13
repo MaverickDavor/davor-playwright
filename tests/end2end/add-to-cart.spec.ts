@@ -14,6 +14,7 @@ test.describe("Adding to Cart second", () => {
     });
     await cartPage.addCartButton.click();
     await cartPage.navCart.click();
+    await page.pause();
     await expect(cartPage.nexusVisible).toBeVisible();
   });
 });
