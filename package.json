@@ -9,7 +9,7 @@
     "test-api": "npx playwright test --project=api-testing",
     "test-logged-in": "npx playwright test --project=logged-in",
     "test-end2end": "npx playwright test --project=end2end",
-    "test-all-projects": "npx playwright test --project=visual-regression --project=api-testing --project=logged-in",
+    "test-all-projects": "npx playwright test --project=visual-regression --project=api-testing --project=logged-in --project=end2end",
     "update-snapshots": "npx playwright test --project=visual-regression --update-snapshots"
   },
   "repository": {
