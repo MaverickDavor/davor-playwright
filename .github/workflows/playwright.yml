@@ -5,7 +5,7 @@ on:
   pull_request:
     branches: [main, master]
 
-    #permission for reporting
+    #permission for reporting to open inside browser
 permissions:
   contents: read
   pages: write
