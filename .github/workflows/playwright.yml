@@ -21,7 +21,7 @@ jobs:
         env:
           USER: ${{secrets.USER}}
           PASSWORD: ${{secrets.PASSWORD}}
-        run: npx playwright test --project=api-testing --project=logged-in
+        run: npx playwright test --project=api-testing --project=logged-in --project=end2end
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:

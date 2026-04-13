@@ -78,7 +78,7 @@ export default defineConfig({
 
     {
       name: "logged-in",
-      testDir: "./tests/end2end/",
+      testDir: "./tests/login/",
       testMatch: "login.spec.ts",
       use: {
         ...devices["Desktop Chrome"],
@@ -87,6 +87,15 @@ export default defineConfig({
       dependencies: ["setup"],
     },
 
+    {
+      name: "end2end",
+      testDir: "./tests/end2end/",
+      testMatch: "*",
+      use: {
+        ...devices["Desktop Chrome"],
+        storageState: STORAGE_STATE,
+      },
+    },
     /*
 
     {
